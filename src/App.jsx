@@ -10,8 +10,6 @@ import CustomCursor from './components/CustomCursor';
 import CodeTooltip from './components/CodeTooltip';
 import Home from './pages/Home';
 import CaseStudy from './pages/CaseStudy';
-import './App.css';
-
 // Component to handle Lenis scroll instantiation globally
 const ScrollToTopAndLenis = () => {
   const { pathname } = useLocation();
