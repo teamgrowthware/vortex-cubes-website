@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors */
+  --bg-dark: #050505;
+  --bg-panel: #0a0a0a;
+  --bg-border: #1a1a1a;
+  --text-main: #f0f0f0;
+  --text-muted: #888888;
+  --accent-blue: #00f0ff;
+  --accent-blue-glow: rgba(0, 240, 255, 0.2);
+  --accent-danger: #ff3366;
+
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Grid & Spacing */
+  --grid-gap: 1.5rem;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Engineered Grid Background */
+.bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-grid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 80%);
+}
+
+/* CRT Noise Overlay */
+.bg-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  animation: noiseScramble 0.2s steps(2) infinite;
+}
+
+/* Scanlines Overlay */
+.bg-grid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  /* 4px scanline gap */
+  opacity: 0.3;
+}
+
+@keyframes noiseScramble {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-2%, -2%);
+  }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-accent {
+  color: var(--accent-blue);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* UI Elements */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 8rem 2rem;
+  position: relative;
+  /* Add space for the borders */
+  margin: 0 auto;
+}
+
+/* Technical L-shaped Border Accents */
+.section::before,
+.section::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: var(--accent-blue);
+  border-style: solid;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Top Left Bracket */
+.section::before {
+  top: 4rem;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+/* Bottom Right Bracket */
+.section::after {
+  bottom: 4rem;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+.glass-panel {
+  background: rgba(8, 8, 8, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: transparent;
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue-glow);
+}
+
+.btn-primary:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 20px var(--accent-blue-glow);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: var(--bg-panel);
+  color: var(--text-main);
+  border: 1px solid var(--bg-border);
+}
+
+.btn-secondary:hover {
+  background: #111;
+  border-color: #333;
+}
+
+/* Scrollbar */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}

@@ -1,0 +1,48 @@
+.code-tooltip {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  padding: 1rem;
+  pointer-events: none;
+  border-right: 2px solid var(--accent-blue);
+  animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-width: 350px;
+}
+
+.code-tooltip .tooltip-header {
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.code-tooltip pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.code-tooltip code {
+  color: var(--accent-blue);
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .code-tooltip {
+    display: none;
+    /* Hide on mobile to save space */
+  }
+}

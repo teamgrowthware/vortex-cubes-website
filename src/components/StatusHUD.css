@@ -1,0 +1,62 @@
+.status-hud {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  z-index: 100;
+  font-size: 0.75rem;
+  min-width: 160px;
+}
+
+.hud-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bg-border);
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+
+.hud-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-modal {
+  position: absolute;
+  bottom: calc(100% + 1rem);
+  right: 0;
+  padding: 1rem;
+  min-width: 220px;
+  border: 1px solid var(--accent-blue);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+  animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-node {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

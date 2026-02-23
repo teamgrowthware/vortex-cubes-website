@@ -1,0 +1,123 @@
+/* Hide default cursor globally */
+body,
+a,
+button {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: opacity 0.3s;
+}
+
+.custom-cursor.hidden {
+  opacity: 0;
+}
+
+.cursor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-blue);
+  border-radius: 50%;
+  transition: width 0.2s, height 0.2s;
+}
+
+.cursor-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 50%;
+  transition: width 0.3s, height 0.3s, border-color 0.3s, border-radius 0.3s;
+}
+
+/* Interaction States */
+.custom-cursor.clicked .cursor-ring {
+  width: 20px;
+  height: 20px;
+  border-color: var(--accent-danger);
+}
+
+.custom-cursor.hovered .cursor-dot {
+  width: 0;
+  height: 0;
+}
+
+.custom-cursor.hovered .cursor-ring {
+  width: 45px;
+  height: 45px;
+  border-color: var(--text-main);
+  border-radius: 4px;
+  /* Becomes a square-ish target */
+  border-style: dashed;
+  animation: rotateRing 4s linear infinite;
+}
+
+.cursor-bracket {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  color: var(--accent-blue);
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.custom-cursor.hovered .cursor-bracket {
+  opacity: 1;
+}
+
+.cursor-bracket.left {
+  left: -20px;
+}
+
+.cursor-bracket.right {
+  right: -20px;
+}
+
+.custom-cursor.hovered .cursor-bracket.left {
+  left: -35px;
+}
+
+.custom-cursor.hovered .cursor-bracket.right {
+  right: -35px;
+}
+
+@keyframes rotateRing {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+  body,
+  a,
+  button {
+    cursor: auto !important;
+    /* Re-enable default cursor on touch devices */
+  }
+}

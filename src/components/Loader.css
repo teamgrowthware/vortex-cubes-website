@@ -1,0 +1,82 @@
+.boot-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-dark);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.boot-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-terminal {
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.boot-line {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typeLine 0.1s steps(40, end);
+}
+
+.prompt {
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+}
+
+.boot-cursor {
+  display: inline-block;
+  width: 12px;
+  height: 1.2rem;
+  background-color: var(--accent-blue);
+  animation: blink 0.8s step-end infinite;
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+}
+
+@keyframes typeLine {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .boot-loader {
+    padding: 2rem;
+  }
+
+  .boot-terminal {
+    font-size: 0.9rem;
+  }
+}
