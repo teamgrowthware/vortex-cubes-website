@@ -1,0 +1,140 @@
+.wcu-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 50vw;
+  height: 80vh;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+  transform: translateY(-50%);
+  pointer-events: none;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.wcu-layout {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Text Side */
+.wcu-text-side {
+  flex: 0 0 35%;
+}
+
+.wcu-main-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.wcu-main-heading span {
+  background: linear-gradient(90deg, #fff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wcu-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Grid Side */
+.wcu-grid-side {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.wcu-feature-card {
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  background: rgba(15, 15, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.wcu-icon-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.wcu-feature-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 0.5rem 0;
+}
+
+/* Hover Accent Line */
+.wcu-feature-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-blue);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.wcu-feature-card:hover {
+  background: rgba(20, 20, 20, 0.8);
+  border-color: rgba(0, 240, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.wcu-feature-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .wcu-layout {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .wcu-text-side {
+    flex: 0 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .wcu-desc {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .wcu-grid-side {
+    grid-template-columns: 1fr;
+  }
+
+  .wcu-main-heading {
+    font-size: 2.2rem;
+  }
+}

@@ -1,10 +1,17 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import CompanyJourney from '../components/CompanyJourney';
+import Services from '../components/Services';
+import Industries from '../components/Industries';
 import TechStack from '../components/TechStack';
 import InteractiveGlobe from '../components/InteractiveGlobe';
 import PortfolioGrid from '../components/PortfolioGrid';
 import DemoTerminal from '../components/DemoTerminal';
+import FAQ from '../components/FAQ';
+import WhyChooseUs from '../components/WhyChooseUs';
+import MissionVision from '../components/MissionVision';
+import Testimonials from '../components/Testimonials';
+import Newsletter from '../components/Newsletter';
 import PageTransition from '../components/PageTransition';
 
 const Home = () => {
@@ -12,11 +19,20 @@ const Home = () => {
     <PageTransition>
       <main>
         <Hero />
+        <WhyChooseUs />
+        <Industries /> {/* Currently: "Sectors" */}
+        <Services />
+        <MissionVision />
         <CompanyJourney />
-        <TechStack />
         <InteractiveGlobe />
+        <Testimonials />
         <PortfolioGrid />
+        <FAQ />
+        <Newsletter />
+        {/* Unused Extra Sections based on requested structure:
+        <TechStack />
         <DemoTerminal />
+        */}
       </main>
     </PageTransition>
   );

@@ -186,7 +186,7 @@ const PortfolioGrid = () => {
   return (
     <section id="portfolio" className="section container" ref={containerRef} style={{ perspective: "1000px" }}>
       <div className="section-header">
-        <h2 className="mono"><span className="text-accent">04.</span> <span ref={titleRef}>DATA_BANKS</span></h2>
+        <h2 className="mono"><span className="text-accent">08.</span> <span ref={titleRef}>DATA_BANKS</span></h2>
         <div className="header-line"></div>
       </div>
 

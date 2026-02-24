@@ -133,7 +133,7 @@ const InteractiveGlobe = () => {
   return (
     <section id="globe" className="section container">
       <div className="section-header">
-        <h2 className="mono"><span className="text-accent">03.</span> <span ref={titleRef}>GLOBAL_NET</span></h2>
+        <h2 className="mono"><span className="text-accent">06.</span> <span ref={titleRef}>GLOBAL_NET</span></h2>
         <div className="header-line"></div>
       </div>
 

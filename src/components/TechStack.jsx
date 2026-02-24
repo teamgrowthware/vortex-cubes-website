@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Layers, Server, Database, Cloud, MonitorSmartphone } from 'lucide-react';
+import { Layers, Server, Database, Cloud, MonitorSmartphone, Hexagon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { scrambleText } from '../utils/textEffects';
 import './TechStack.css';
@@ -37,7 +37,7 @@ const TechStack = () => {
   return (
     <section id="tech" className="section container">
       <div className="section-header">
-        <h2 className="mono"><span className="text-accent">02.</span> <span ref={titleRef}>CORE_STACK</span></h2>
+        <h2 className="mono"><span className="text-accent">05.</span> <span ref={titleRef}>CORE_STACK</span></h2>
         <div className="header-line"></div>
       </div>
 
@@ -58,7 +58,7 @@ const TechStack = () => {
             <div className="stack-body">
               {item.techs.map((tech, i) => (
                 <div key={i} className="tech-item mono">
-                  <span className="tech-bullet text-accent">{'>'}</span> {tech}
+                  <span className="tech-bullet text-accent"><Hexagon size={12} fill="currentColor" fillOpacity={0.2} /></span> {tech}
                 </div>
               ))}
             </div>

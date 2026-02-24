@@ -75,6 +75,18 @@
   transition: color 0.2s ease;
 }
 
+.tech-bullet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.stack-card:hover .tech-bullet {
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+  transform: scale(1.1);
+}
+
 .stack-card:hover .tech-item {
   color: var(--text-main);
 }

@@ -1,13 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import { Database, Users, Globe2, Cpu } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Database, Users, Globe2, Cpu, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { scrambleText } from '../utils/textEffects';
 import './CompanyJourney.css';
 
 const stats = [
-  { id: 1, icon: <Cpu />, title: 'Projects Delivered', value: '50+', desc: 'Enterprise grade applications delivered.' },
-  { id: 2, icon: <Users />, title: 'Active Clients', value: '30+', desc: 'Startups and corporations empowered.' },
-  { id: 3, icon: <Globe2 />, title: 'Cities Served', value: '10+', desc: 'Global presence across major tech hubs.' },
+  { id: 1, icon: <Cpu size={44} strokeWidth={1.5} color="#3b82f6" />, title: 'Projects Delivered', value: '145+', desc: 'Enterprise grade applications delivered.' },
+  { id: 2, icon: <Users size={44} strokeWidth={1.5} color="#3b82f6" />, title: 'Active Clients', value: '30+', desc: 'Startups and corporations empowered.' },
+  { id: 3, icon: <Globe2 size={44} strokeWidth={1.5} color="#3b82f6" />, title: 'Countries Served', value: '10+', desc: 'Global presence across major tech hubs.' },
+  { id: 4, icon: <Activity size={44} strokeWidth={1.5} color="#3b82f6" />, title: 'Client Retention Rate', value: '95%', desc: 'Long-term partnerships built on trust and reliable delivery.' },
 ];
 
 const milestones = [
@@ -19,9 +22,56 @@ const milestones = [
 
 const CompanyJourney = () => {
   const titleRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     if (titleRef.current) scrambleText(titleRef.current, 'SYSTEM_METRICS');
+  }, []);
+
+  // GSAP ScrollTrigger for pinning and sequential highlight
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    const wrapper = wrapperRef.current;
+    if (!container || !wrapper) return;
+
+    let ctx = gsap.context(() => {
+      // Calculate how much horizontal scroll is needed to show all cards
+      const overflow = Math.max(0, container.scrollWidth - window.innerWidth + 100);
+
+      // Pin the section and animate horizontal scroll
+      gsap.to(container, {
+        x: -overflow, // Pan horizontally only if it overflows
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrapper,
+          pin: true,
+          scrub: 1,
+          start: 'center center', // Pin perfectly in the center of the viewport
+          end: '+=2500', // Pin duration (scroll distance)
+          onUpdate: (self) => {
+            // Calculate which card should be active (only ONE at a time)
+            let idx = Math.floor(self.progress * milestones.length);
+            // Clamp value to array bounds
+            idx = Math.max(0, Math.min(idx, milestones.length - 1));
+
+            // Manually update the DOM to avoid React re-renders during pinning
+            if (container && container.children) {
+              Array.from(container.children).forEach((child, i) => {
+                if (i === idx) {
+                  child.classList.add('active');
+                } else {
+                  child.classList.remove('active');
+                }
+              });
+            }
+          }
+        }
+      });
+    }, wrapperRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -31,7 +81,7 @@ const CompanyJourney = () => {
         <div className="header-line"></div>
       </div>
 
-      <div className="journey-stats grid-cols-1 md:grid-cols-3" style={{ display: 'grid', gap: '2rem', marginBottom: '4rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
+      <div className="journey-stats grid grid-cols-4" style={{ display: 'grid', gap: '2rem', marginBottom: '4rem', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' }}>
         {stats.map((item, index) => (
           <motion.div
             key={item.id}
@@ -40,55 +90,44 @@ const CompanyJourney = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
+            style={{ padding: '2rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center' }}
           >
-            <div className="node-icon text-accent">{item.icon}</div>
+            <div className="node-icon" style={{ marginBottom: '0.5rem' }}>{item.icon}</div>
             <div className="node-content">
-              <h3 className="node-value">{item.value}</h3>
-              <h4 className="node-title mono">{item.title}</h4>
+              <h3 className="node-value text-accent" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '0.5rem', lineHeight: '1' }}>{item.value}</h3>
+              <h4 className="node-title mono" style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>{item.title}</h4>
               <p className="node-desc text-muted">{item.desc}</p>
             </div>
           </motion.div>
         ))}
       </div>
 
-      <div className="journey-timeline relative">
-        {/* The central wire that spans the whole height */}
-        <div className="timeline-wire"></div>
+      <div className="journey-container-pinned" ref={wrapperRef} style={{ width: '100%' }}>
+        <div className="section-header" style={{ marginTop: '6rem', marginBottom: '4rem' }}>
+          <h2 className="mono"><span className="text-accent">02.</span> <span>COMPANY_JOURNEY</span></h2>
+          <div className="header-line"></div>
+        </div>
 
-        {/* The animated glow traversing down the wire */}
-        <motion.div
-          className="timeline-glow"
-          initial={{ top: '0%', opacity: 0 }}
-          whileInView={{ top: '100%', opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 2, ease: "linear" }}
-        />
+        <div style={{ overflow: 'hidden' }}>
+          <div className="journey-timeline relative" ref={scrollContainerRef} style={{ width: 'max-content', paddingRight: '10vw' }}>
 
-        {milestones.map((item, index) => (
-          <motion.div
-            key={item.id}
-            className="timeline-item"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {/* The little glowing connection dot on the wire */}
-            <motion.div
-              className="timeline-node-point"
-              initial={{ scale: 0, backgroundColor: 'var(--bg-dark)' }}
-              whileInView={{ scale: 1, backgroundColor: '#00f0ff' }}
-              viewport={{ once: true, margin: "-150px" }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-            />
+            {milestones.map((item, index) => (
+              <div
+                key={item.id}
+                className={`timeline-item ${index === 0 ? 'active' : ''}`}
+              >
+                {/* The little glowing connection dot on the wire */}
+                <div className="timeline-node-point" />
 
-            <div className="timeline-content glass-panel">
-              <span className="timeline-year mono">{item.year}</span>
-              <h4 className="timeline-title mono text-accent">{item.title}</h4>
-              <p className="timeline-desc">{item.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+                <div className="timeline-content glass-panel">
+                  <span className="timeline-year mono">{item.year}</span>
+                  <h4 className="timeline-title mono text-accent">{item.title}</h4>
+                  <p className="timeline-desc">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

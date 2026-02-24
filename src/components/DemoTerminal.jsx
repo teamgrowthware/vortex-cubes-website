@@ -33,7 +33,7 @@ const DemoTerminal = () => {
   return (
     <section id="demo" className="section container">
       <div className="section-header">
-        <h2 className="mono"><span className="text-accent">05.</span> <span ref={titleRef}>SYSTEM_CONFIG</span></h2>
+        <h2 className="mono"><span className="text-accent">08.</span> <span ref={titleRef}>SYSTEM_CONFIG</span></h2>
         <div className="header-line"></div>
       </div>
 

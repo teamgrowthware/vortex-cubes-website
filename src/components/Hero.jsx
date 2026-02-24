@@ -63,24 +63,12 @@ const Hero = () => {
 
     // Position cubes dynamically based on screen
     const isMobile = window.innerWidth < 768;
-    cube.position.x = isMobile ? 0 : 2.5;
-    innerCube.position.x = isMobile ? 0 : 2.5;
+    cube.position.x = isMobile ? 0 : 5.0;
+    innerCube.position.x = isMobile ? 0 : 5.0;
+
 
     // --- Clean Mouse Tracking for Hover Interactivity ---
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    const windowHalfX = window.innerWidth / 2;
-    const windowHalfY = window.innerHeight / 2;
-
-    const handleMouseMove = (event) => {
-      // Small clamped values to prevent wild camera swings
-      mouseX = (event.clientX - windowHalfX) * 0.001;
-      mouseY = (event.clientY - windowHalfY) * 0.001;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
+    // (Parallax disabled upon request)
 
     // --- Clean Animation Loop Constants ---
     let animationFrameId;
@@ -99,13 +87,10 @@ const Hero = () => {
       innerCube.rotation.x -= 0.010;
       innerCube.rotation.y -= 0.015;
       innerCube.rotation.z -= 0.006;
-
-      // PARALLAX CAMERA MOVEMENT
-      targetX = targetX + (mouseX - targetX) * 0.05;
-      targetY = targetY + (mouseY - targetY) * 0.05;
-      camera.position.x = targetX * 3;
-      camera.position.y = targetY * -3;
-      camera.lookAt(window.innerWidth < 768 ? 0 : 2.5, 0, 0);
+      // PARALLAX CAMERA MOVEMENT (Disabled)
+      camera.position.x = 0;
+      camera.position.y = 0;
+      camera.lookAt(window.innerWidth < 768 ? 0 : 1.5, 0, 0);
 
       // METRICS OVERLAY UPDATE
       if (rotOverlayRef.current) {
@@ -118,8 +103,8 @@ const Hero = () => {
       if (glowRef.current) {
         const time = Date.now() * 0.001;
         const intensity = 0.2 + Math.sin(time * 2.5) * 0.15 + Math.cos(time * 1.8) * 0.15;
-        const posX = 50 + Math.sin(time * 3) * 10 - (targetX * 50);
-        const posY = 50 + Math.cos(time * 4) * 10 - (targetY * 50);
+        const posX = 50 + Math.sin(time * 3) * 10;
+        const posY = 50 + Math.cos(time * 4) * 10;
         glowRef.current.style.background = `radial-gradient(circle at ${posX}% ${posY}%, rgba(0, 240, 255, ${intensity}) 0%, transparent 40%)`;
       }
 
@@ -136,8 +121,8 @@ const Hero = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
 
       const mobile = window.innerWidth < 768;
-      cube.position.x = mobile ? 0 : 2.5;
-      innerCube.position.x = mobile ? 0 : 2.5;
+      cube.position.x = mobile ? 0 : 5.0;
+      innerCube.position.x = mobile ? 0 : 5.0;
     };
     window.addEventListener('resize', handleResize);
 
@@ -145,7 +130,6 @@ const Hero = () => {
       isDestroyed = true;
       initialized.current = false;
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
 
       ScrollTrigger.getAll().forEach(t => t.kill());
@@ -200,20 +184,6 @@ const Hero = () => {
               REQUEST DEMO
             </button>
           </div>
-        </div>
-
-        <div className="bios-hud glass-panel mono">
-          <div className="bios-header text-accent">SYSTEM.BIOS_v2.0.4</div>
-          <ul className="bios-list">
-            <li><span className="text-muted">Loading Engine:</span> <span>Node.js_v20</span></li>
-            <li><span className="text-muted">Interface:</span> <span>React.js</span></li>
-            <li><span className="text-muted">Cloud DB:</span> <span>AWS RDS</span></li>
-            <li><span className="text-muted">3D Core:</span> <span>WebGL</span></li>
-            <li>
-              <span className="text-accent">Status:</span>
-              <span className={systemStatus !== 'OPTIMAL' ? 'status-flicker text-accent' : ''}>{systemStatus}</span>
-            </li>
-          </ul>
         </div>
       </div>
     </section>

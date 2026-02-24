@@ -26,7 +26,8 @@ const ScrollHexTracker = () => {
 
   // Interpolate binary bits
   const getBinaryBars = () => {
-    const activeBars = Math.floor((scrollProgress / 100) * 8);
+    // Ensure at least 1 bar is active even at the top of the page
+    const activeBars = Math.max(1, Math.floor((scrollProgress / 100) * 8));
     return Array(8).fill(0).map((_, i) => (
       <div key={i} className={`hex-bar ${i < activeBars ? 'active' : ''}`} />
     ));

@@ -15,7 +15,7 @@ const Navigation = () => {
     <nav className="nav-container glass-panel">
       <div className="nav-brand">
         <Box size={24} className="text-accent" />
-        <span className="mono brand-text">VORTEX CUBES // CMD</span>
+        <span className="mono brand-text">VORTEX CUBES </span>
       </div>
 
       <div className="nav-links mono">
