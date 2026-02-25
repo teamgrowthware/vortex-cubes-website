@@ -138,3 +138,30 @@
     margin-bottom: 0;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem !important;
+    /* Force smaller size on very small screens */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .bios-hud {
+    display: none;
+  }
+}

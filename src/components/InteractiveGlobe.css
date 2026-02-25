@@ -108,8 +108,15 @@
   line-height: 2;
 }
 
-@media (max-width: 1024px) {
-  .globe-container {
-    flex-direction: column;
+.globe-container {
+  flex-direction: column;
+}
+}
+
+@media (max-width: 480px) {
+  .project-data-sheet {
+    width: 100%;
+    min-width: 280px;
+    padding: 1.5rem;
   }
 }

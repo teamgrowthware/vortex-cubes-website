@@ -27,6 +27,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .portfolio-bento {
+    grid-template-columns: 1fr;
+  }
+}
+
 .bento-card:hover {
   border-color: var(--accent-blue);
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);

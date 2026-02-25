@@ -1,13 +1,16 @@
 import React from 'react';
-import { BookOpen, PhoneCall, Box } from 'lucide-react';
+import { BookOpen, PhoneCall, Box, Menu, X } from 'lucide-react';
 import './Navigation.css';
 
 const Navigation = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
   const handleScroll = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false); // Close menu on click
     }
   };
 
@@ -42,6 +45,41 @@ const Navigation = () => {
           <PhoneCall size={16} /> <span style={{ marginLeft: '0.5rem' }}>CONTACT US</span>
         </button>
       </div>
+
+      {/* Hamburger Menu Toggle (Mobile Only) */}
+      <button
+        className="mobile-menu-toggle"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? <X size={24} className="text-accent" /> : <Menu size={24} className="text-accent" />}
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-overlay glass-panel">
+          <div className="mobile-nav-links mono">
+            <a href="#hero" onClick={(e) => handleScroll(e, 'hero')}>HOME</a>
+            <a href="#industries" onClick={(e) => handleScroll(e, 'industries')}>SECTORS</a>
+            <a href="#globe" onClick={(e) => handleScroll(e, 'globe')}>GLOBAL</a>
+            <a href="#portfolio" onClick={(e) => handleScroll(e, 'portfolio')}>PORTFOLIO</a>
+            <a href="#journey" onClick={(e) => handleScroll(e, 'journey')}>ABOUT US</a>
+          </div>
+          <div className="mobile-nav-actions">
+            <button
+              className="btn btn-secondary w-full"
+              onClick={() => alert('SYSTEM.DOCS: Accessing external resources...')}
+            >
+              <BookOpen size={16} /> <span style={{ marginLeft: '0.5rem' }}>RESOURCES</span>
+            </button>
+            <button
+              className="btn btn-primary w-full"
+              onClick={(e) => handleScroll(e, 'contact')}
+            >
+              <PhoneCall size={16} /> <span style={{ marginLeft: '0.5rem' }}>CONTACT US</span>
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
