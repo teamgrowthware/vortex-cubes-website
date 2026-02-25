@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Database, Users, Globe2, Cpu, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';

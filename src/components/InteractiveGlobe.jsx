@@ -27,6 +27,7 @@ const InteractiveGlobe = () => {
   const [activeCity, setActiveCity] = useState(null);
 
   useEffect(() => {
+    const currentContainer = containerRef.current;
     if (titleRef.current) scrambleText(titleRef.current, 'GLOBAL_NET');
 
     if (!containerRef.current) return;
@@ -139,8 +140,8 @@ const InteractiveGlobe = () => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
+      if (currentContainer) {
+        currentContainer.innerHTML = '';
       }
     };
   }, []);

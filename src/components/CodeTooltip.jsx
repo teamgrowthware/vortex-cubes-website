@@ -3,7 +3,6 @@ import './CodeTooltip.css';
 
 const CodeTooltip = () => {
   const [tooltipData, setTooltipData] = useState(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseOver = (e) => {
@@ -11,8 +10,6 @@ const CodeTooltip = () => {
       if (target) {
         const snippet = target.getAttribute('data-code-tooltip');
         setTooltipData(snippet);
-        // Position at bottom right corner
-        setPosition({ x: window.innerWidth - 20, y: window.innerHeight - 20 });
       }
     };
 

@@ -13,11 +13,11 @@ const Hero = () => {
   const glowRef = useRef(null);
   const title1Ref = useRef(null);
   const title2Ref = useRef(null);
-  const [systemStatus, setSystemStatus] = useState('OPTIMAL');
 
   const initialized = useRef(false);
 
   useEffect(() => {
+    const currentMount = mountRef.current;
     if (initialized.current) return;
     initialized.current = true;
 
@@ -134,10 +134,10 @@ const Hero = () => {
 
       ScrollTrigger.getAll().forEach(t => t.kill());
 
-      if (mountRef.current && renderer.domElement) {
+      if (currentMount && renderer.domElement) {
         // Safe removal check
-        if (mountRef.current.contains(renderer.domElement)) {
-          mountRef.current.removeChild(renderer.domElement);
+        if (currentMount.contains(renderer.domElement)) {
+          currentMount.removeChild(renderer.domElement);
         }
       }
 
@@ -168,8 +168,6 @@ const Hero = () => {
             <button
               className="btn btn-primary"
               onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-              onMouseEnter={() => setSystemStatus('ANALYZING...')}
-              onMouseLeave={() => setSystemStatus('OPTIMAL')}
               data-code-tooltip="const query = db.collection('projects')&#10;  .where('status', '==', 'active')&#10;  .limit(10);"
             >
               VIEW WORK
@@ -177,8 +175,6 @@ const Hero = () => {
             <button
               className="btn btn-secondary"
               onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
-              onMouseEnter={() => setSystemStatus('INITIALIZING...')}
-              onMouseLeave={() => setSystemStatus('OPTIMAL')}
               data-code-tooltip="const session = await createSession({&#10;  mode: 'demo',&#10;  secure: true&#10;});"
             >
               REQUEST DEMO
