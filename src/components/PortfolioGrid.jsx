@@ -42,11 +42,11 @@ const projects = [
     caseStudy: "/portfolio/paper-bill"
   },
   {
-    name: "Velocity",
-    category: "Educational Portal",
-    desc: "Industry-relevant skills content delivery platform.",
-    type: "LMS",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop",
+    name: "Velocity Corp",
+    category: "EdTech Platform",
+    desc: "Complete corporate training center website with Student Portal & Admin Dashboard.",
+    type: "LMS & CRM",
+    image: "/images/velocity-preview.png", // USER_ACTION: Save your screenshot as velocity-preview.png in public/images/ folder
     link: "#",
     caseStudy: "/portfolio/velocity"
   },
