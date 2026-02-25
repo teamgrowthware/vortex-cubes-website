@@ -29,7 +29,7 @@ const CaseStudy = () => {
 
   return (
     <PageTransition>
-      <main className="section container" style={{ paddingTop: '8rem', minHeight: '100vh' }}>
+      <main className="section container" style={{ paddingTop: '8rem', minHeight: '60vh' }}>
         <div className="section-header" style={{ marginBottom: '2rem' }}>
           <Link to="/#portfolio" className="btn btn-secondary mono" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
             <ArrowLeft size={16} /> RETURN_TO_SYSTEM
