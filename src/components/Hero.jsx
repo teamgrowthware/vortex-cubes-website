@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const mountRef = useRef(null);
-  const rotOverlayRef = useRef(null);
   const glowRef = useRef(null);
   const title1Ref = useRef(null);
   const title2Ref = useRef(null);
@@ -92,13 +91,6 @@ const Hero = () => {
       camera.position.y = 0;
       camera.lookAt(window.innerWidth < 768 ? 0 : 1.5, 0, 0);
 
-      // METRICS OVERLAY UPDATE
-      if (rotOverlayRef.current) {
-        const degX = Math.abs(((cube.rotation.x * 180 / Math.PI) % 360)).toFixed(1);
-        const degY = Math.abs(((cube.rotation.y * 180 / Math.PI) % 360)).toFixed(1);
-        rotOverlayRef.current.innerText = `[ROT_SYNC] X: ${degX}° Y: ${degY}°`;
-      }
-
       // DYNAMIC GLOW (Uses simple Date.now without relying on Three context)
       if (glowRef.current) {
         const time = Date.now() * 0.001;
@@ -153,7 +145,6 @@ const Hero = () => {
     <section id="hero" className="hero-section">
       <div ref={glowRef} className="hero-glow"></div>
       <div ref={mountRef} className="hero-canvas" style={{ pointerEvents: 'none' }}></div>
-      <div className="rot-overlay mono text-muted" ref={rotOverlayRef}></div>
 
       <div className="hero-content container">
         <div className="hero-text">

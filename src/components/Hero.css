@@ -44,19 +44,6 @@
   pointer-events: auto;
 }
 
-.rot-overlay {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 5;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
 .status-flicker {
   animation: flicker 0.2s infinite alternate;
 }
@@ -94,34 +81,6 @@
   gap: 1.5rem;
 }
 
-.bios-hud {
-  padding: 1.5rem;
-  font-size: 0.85rem;
-  min-width: 280px;
-  align-self: flex-end;
-  margin-bottom: 4rem;
-}
-
-.bios-header {
-  border-bottom: 1px solid var(--bg-border);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-}
-
-.bios-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.bios-list li {
-  display: flex;
-  justify-content: space-between;
-}
-
 @media (max-width: 900px) {
   .hero-content {
     flex-direction: column;
@@ -131,11 +90,6 @@
 
   .hero-title {
     font-size: 3.5rem;
-  }
-
-  .bios-hud {
-    align-self: flex-start;
-    margin-bottom: 0;
   }
 }
 
@@ -159,9 +113,5 @@
     width: 100%;
     text-align: center;
     justify-content: center;
-  }
-
-  .bios-hud {
-    display: none;
   }
 }
