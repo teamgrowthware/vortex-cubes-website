@@ -84,13 +84,7 @@ const CaseStudy = () => {
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-            {/* The Visit_Live_Deployment button is conditionally rendered here if link isn't "#", though currently all are "#".
-               Just leaving it as a mockup standard. */}
-            <button className="btn btn-primary mono" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              ACCESS_SECURE_PORTAL <ExternalLink size={16} />
-            </button>
-          </div>
+          {/* The ACCESS_SECURE_PORTAL button has been removed by user request */}
         </div>
       </main>
     </PageTransition>
