@@ -55,6 +55,7 @@ const TiltCard = ({ project, index }) => {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={() => navigate(`/portfolio/${project.id}`)}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -64,7 +65,7 @@ const TiltCard = ({ project, index }) => {
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className={`bento-card glass-panel group relative ${index === 0 || index === 3 ? 'featured-card' : ''}`}
+      className={`bento-card glass-panel group relative cursor-pointer ${index === 0 || index === 3 ? 'featured-card' : ''}`}
     >
       {/* 3D Container specific padding to keep content separate from the outer frame */}
       <div style={{ padding: '1.5rem', transform: "translateZ(30px)", transformStyle: "preserve-3d" }}>
@@ -108,12 +109,7 @@ const TiltCard = ({ project, index }) => {
         <div className="card-bottom" style={{ transform: "translateZ(40px)", position: "relative", zIndex: 50 }}>
           <div className="tech-tags mono" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <div
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                navigate(`/portfolio/${project.id}`);
-              }}
-              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none', cursor: 'pointer', pointerEvents: 'auto', padding: '0.5rem 0' }} className="hover:text-white transition-colors relative z-50">
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none', cursor: 'pointer', pointerEvents: 'none', padding: '0.5rem 0' }} className="hover:text-white transition-colors relative z-50">
               Case Study
             </div>
           </div>
