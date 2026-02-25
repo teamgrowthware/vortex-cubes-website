@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Lenis from 'lenis';
 import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/Navigation';
-import StatusHUD from './components/StatusHUD';
 import Loader from './components/Loader';
 import ScrollHexTracker from './components/ScrollHexTracker';
 import CustomCursor from './components/CustomCursor';
@@ -81,7 +80,6 @@ function App() {
 
         <div className="bg-grid"></div>
         <Navigation />
-        <StatusHUD />
         <ScrollHexTracker />
 
         <AnimatedRoutes />
