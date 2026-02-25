@@ -73,7 +73,7 @@ const Testimonials = () => {
 
       <div className="section-header" style={{ marginBottom: '3rem' }}>
         <h2 className="mono">
-          <span className="text-accent">06.</span> <span>TESTIMONIALS</span>
+          <span className="text-accent">07.</span> <span>TESTIMONIALS</span>
         </h2>
         <div className="header-line"></div>
       </div>

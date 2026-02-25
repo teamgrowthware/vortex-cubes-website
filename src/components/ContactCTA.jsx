@@ -5,7 +5,7 @@ import './ContactCTA.css';
 
 const ContactCTA = () => {
   return (
-    <section className="contact-cta-wrapper">
+    <section id="contact" className="contact-cta-wrapper">
       {/* Background Ambience */}
       <div className="cta-glow-bg"></div>
 

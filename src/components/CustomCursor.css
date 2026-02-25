@@ -1,7 +1,18 @@
-/* Hide default cursor globally */
 body,
 a,
-button {
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+input,
+textarea,
+select {
   cursor: none !important;
 }
 
@@ -12,7 +23,7 @@ button {
   width: 0;
   height: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
   mix-blend-mode: difference;
   transition: opacity 0.3s;
 }
@@ -67,37 +78,7 @@ button {
   animation: rotateRing 4s linear infinite;
 }
 
-.cursor-bracket {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--font-mono);
-  color: var(--accent-blue);
-  font-size: 1.2rem;
-  font-weight: bold;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
 
-.custom-cursor.hovered .cursor-bracket {
-  opacity: 1;
-}
-
-.cursor-bracket.left {
-  left: -20px;
-}
-
-.cursor-bracket.right {
-  right: -20px;
-}
-
-.custom-cursor.hovered .cursor-bracket.left {
-  left: -35px;
-}
-
-.custom-cursor.hovered .cursor-bracket.right {
-  right: -35px;
-}
 
 @keyframes rotateRing {
   from {
@@ -116,7 +97,19 @@ button {
 
   body,
   a,
-  button {
+  button,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  div,
+  input,
+  textarea,
+  select {
     cursor: auto !important;
     /* Re-enable default cursor on touch devices */
   }

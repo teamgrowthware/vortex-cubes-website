@@ -77,7 +77,7 @@ const CompanyJourney = () => {
   return (
     <section id="journey" className="section container">
       <div className="section-header">
-        <h2 className="mono"><span className="text-accent">01.</span> <span ref={titleRef}>SYSTEM_METRICS</span></h2>
+        <h2 className="mono"><span className="text-accent">04.</span> <span ref={titleRef}>SYSTEM_METRICS</span></h2>
         <div className="header-line"></div>
       </div>
 
@@ -104,7 +104,7 @@ const CompanyJourney = () => {
 
       <div className="journey-container-pinned" ref={wrapperRef} style={{ width: '100%' }}>
         <div className="section-header" style={{ marginTop: '6rem', marginBottom: '4rem' }}>
-          <h2 className="mono"><span className="text-accent">02.</span> <span>COMPANY_JOURNEY</span></h2>
+          <h2 className="mono"><span className="text-accent">05.</span> <span>COMPANY_JOURNEY</span></h2>
           <div className="header-line"></div>
         </div>
 

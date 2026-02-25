@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Crosshair, Box } from 'lucide-react';
+import { BookOpen, PhoneCall, Box } from 'lucide-react';
 import './Navigation.css';
 
 const Navigation = () => {
@@ -19,26 +19,27 @@ const Navigation = () => {
       </div>
 
       <div className="nav-links mono">
-        <a href="#hero" onClick={(e) => handleScroll(e, 'hero')}>SYS_INIT</a>
-        <a href="#tech" onClick={(e) => handleScroll(e, 'tech')}>STACK</a>
-        <a href="#globe" onClick={(e) => handleScroll(e, 'globe')}>GLOBAL_NET</a>
-        <a href="#portfolio" onClick={(e) => handleScroll(e, 'portfolio')}>DATA_BANKS</a>
+        <a href="#hero" onClick={(e) => handleScroll(e, 'hero')}>HOME</a>
+        <a href="#industries" onClick={(e) => handleScroll(e, 'industries')}>SECTORS</a>
+        <a href="#globe" onClick={(e) => handleScroll(e, 'globe')}>GLOBAL</a>
+        <a href="#portfolio" onClick={(e) => handleScroll(e, 'portfolio')}>PORTFOLIO</a>
+        <a href="#journey" onClick={(e) => handleScroll(e, 'journey')}>ABOUT US</a>
       </div>
 
       <div className="nav-actions">
         <button
           className="btn btn-secondary"
-          onClick={() => alert('SYSTEM.DOCS: Accessing internal documentation...')}
-          data-code-tooltip="fetch('/api/v1/docs/internal')&#10;  .then(res => res.json())"
+          onClick={() => alert('SYSTEM.DOCS: Accessing external resources...')}
+          data-code-tooltip="fetch('/api/v1/resources')&#10;  .then(res => res.json())"
         >
-          <Terminal size={16} /> <span style={{ marginLeft: '0.5rem' }}>DOCS</span>
+          <BookOpen size={16} /> <span style={{ marginLeft: '0.5rem' }}>RESOURCES</span>
         </button>
         <button
           className="btn btn-primary"
-          onClick={(e) => handleScroll(e, 'demo')}
-          data-code-tooltip="function initDeployment() {&#10;  router.push('#demo');&#10;}"
+          onClick={(e) => handleScroll(e, 'contact')}
+          data-code-tooltip="function initContact() {&#10;  router.push('#contact');&#10;}"
         >
-          <Crosshair size={16} /> <span style={{ marginLeft: '0.5rem' }}>DEPLOY</span>
+          <PhoneCall size={16} /> <span style={{ marginLeft: '0.5rem' }}>CONTACT US</span>
         </button>
       </div>
     </nav>

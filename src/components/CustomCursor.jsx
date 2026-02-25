@@ -61,8 +61,6 @@ const CustomCursor = () => {
     >
       <div className="cursor-dot"></div>
       <div className="cursor-ring"></div>
-      {linkHovered && <span className="cursor-bracket left">[</span>}
-      {linkHovered && <span className="cursor-bracket right">]</span>}
     </div>
   );
 };

@@ -15,7 +15,7 @@ const destinations = [
   { lat: 37.7749, lng: -122.4194, city: 'San Francisco', client: 'Agro Tech', project: 'SaaS Platform', tech: 'Next.js, Node.js', code: 'US' },
   { lat: 3.1390, lng: 101.6869, city: 'Kuala Lumpur', client: 'Client MY', project: 'FinTech App', tech: 'React Native', code: 'MY' },
   { lat: 23.8103, lng: 90.4125, city: 'Dhaka', client: 'Client BD', project: 'E-commerce', tech: 'React, Shopify', code: 'BD' },
-  { lat: 51.5074, lng: -0.1278, city: 'London', client: 'Kohlico', project: 'Logistics', tech: 'Angular, Spring', code: 'UK' }
+  { lat: 51.5074, lng: -0.1278, city: 'London', client: 'Kohlico', project: 'Logistics', tech: 'Angular, Spring', code: 'GB' }
 ];
 
 const cities = [INDORE, ...destinations];
@@ -76,21 +76,36 @@ const InteractiveGlobe = () => {
         .arcDashInitialGap(d => d.delay / 2000)
         .arcDashAnimateTime(2500)
         .arcStroke(0.7)
-        .labelsData(destinations)
-        .labelLat('lat')
-        .labelLng('lng')
-        .labelText('code')
-        .labelSize(1.5)
-        .labelDotRadius(0.3)
-        .labelColor(() => 'rgba(0, 240, 255, 0.9)')
-        .labelResolution(2)
-        .labelAltitude(0.06)
+        .htmlElementsData(cities)
+        .htmlElement(d => {
+          const el = document.createElement('div');
+          el.className = 'interactive-node mono';
+          el.style.pointerEvents = 'auto';
+          el.style.cursor = 'none';
+          el.style.transform = 'translate(-50%, -50%)';
+
+          // Style for the initial letter
+          el.style.color = '#00f0ff';
+          el.style.fontSize = '12px';
+          el.style.fontWeight = 'bold';
+          el.style.textShadow = '0 0 5px rgba(0, 240, 255, 0.8)';
+          el.style.padding = '2px 4px';
+          el.style.border = '1px solid rgba(0, 240, 255, 0.3)';
+          el.style.borderRadius = '2px';
+          el.style.backgroundColor = 'rgba(8, 8, 12, 0.6)';
+          el.style.backdropFilter = 'blur(4px)';
+
+          const initial = d.city ? d.city.charAt(0).toUpperCase() : '';
+          el.innerHTML = initial;
+
+          // Show details on click
+          el.onclick = () => setActiveCity(d);
+          return el;
+        })
+        .htmlAltitude(0.08)
         .onPointClick((point) => {
           setActiveCity(point);
           // Optional: sound code could go here, e.g., new Audio('/pulse.mp3').play()
-        })
-        .onLabelClick((label) => {
-          setActiveCity(label);
         });
 
       // Inject custom Additive Blending to materials in the globe scene

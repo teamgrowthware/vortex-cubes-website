@@ -45,10 +45,7 @@ const Industries = () => {
               key={ind.id}
               className={`industry-list-item mono ${activeId === ind.id ? 'active' : ''}`}
               onMouseEnter={() => setActiveId(ind.id)}
-              onClick={() => {
-                const portfolioSection = document.getElementById('portfolio');
-                if (portfolioSection) portfolioSection.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => setActiveId(ind.id)}
             >
               <div className="item-indicator"></div>
               <span className="item-name">{ind.name}</span>
