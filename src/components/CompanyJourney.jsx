@@ -37,38 +37,55 @@ const CompanyJourney = () => {
     if (!container || !wrapper) return;
 
     let ctx = gsap.context(() => {
-      // Calculate how much horizontal scroll is needed to show all cards
-      const overflow = Math.max(0, container.scrollWidth - window.innerWidth + 100);
+      // Only apply horizontal scroll pinning on desktop
+      if (window.innerWidth > 768) {
+        // Calculate how much horizontal scroll is needed to show all cards
+        const overflow = Math.max(0, container.scrollWidth - window.innerWidth + 100);
 
-      // Pin the section and animate horizontal scroll
-      gsap.to(container, {
-        x: -overflow, // Pan horizontally only if it overflows
-        ease: 'none',
-        scrollTrigger: {
-          trigger: wrapper,
-          pin: true,
-          scrub: 1,
-          start: 'center center', // Pin perfectly in the center of the viewport
-          end: '+=2500', // Pin duration (scroll distance)
-          onUpdate: (self) => {
-            // Calculate which card should be active (only ONE at a time)
-            let idx = Math.floor(self.progress * milestones.length);
-            // Clamp value to array bounds
-            idx = Math.max(0, Math.min(idx, milestones.length - 1));
+        // Pin the section and animate horizontal scroll
+        gsap.to(container, {
+          x: -overflow, // Pan horizontally only if it overflows
+          ease: 'none',
+          scrollTrigger: {
+            trigger: wrapper,
+            pin: true,
+            scrub: 1,
+            start: 'center center', // Pin perfectly in the center of the viewport
+            end: '+=2500', // Pin duration (scroll distance)
+            onUpdate: (self) => {
+              // Calculate which card should be active (only ONE at a time)
+              let idx = Math.floor(self.progress * milestones.length);
+              // Clamp value to array bounds
+              idx = Math.max(0, Math.min(idx, milestones.length - 1));
 
-            // Manually update the DOM to avoid React re-renders during pinning
-            if (container && container.children) {
-              Array.from(container.children).forEach((child, i) => {
-                if (i === idx) {
-                  child.classList.add('active');
-                } else {
-                  child.classList.remove('active');
-                }
-              });
+              // Manually update the DOM to avoid React re-renders during pinning
+              if (container && container.children) {
+                Array.from(container.children).forEach((child, i) => {
+                  if (i === idx) {
+                    child.classList.add('active');
+                  } else {
+                    child.classList.remove('active');
+                  }
+                });
+              }
             }
           }
-        }
-      });
+        });
+      } else {
+        // On mobile, just apply standard fade-in or leave it to CSS
+        // GSAP ScrollTrigger could still highlight items as they scroll into view
+        const items = gsap.utils.toArray('.timeline-item');
+        items.forEach((item) => {
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: item,
+              start: 'top center+=200',
+              end: 'bottom center',
+              toggleClass: 'active',
+            }
+          });
+        });
+      }
     }, wrapperRef);
 
     return () => ctx.revert();
