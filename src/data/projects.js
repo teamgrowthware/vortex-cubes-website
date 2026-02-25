@@ -1,0 +1,80 @@
+export const projectsData = [
+  {
+    id: "samriddhi",
+    name: "Samriddhi",
+    category: "Agro Tech",
+    desc: "Agricultural product registration and online inventory management.",
+    type: "Dashboard",
+    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=800&auto=format&fit=crop",
+    link: "#",
+    caseStudyText: "Developed a comprehensive dashboard for agricultural product registration. The platform streamlines inventory management and provides real-time tracking for agricultural assets.",
+    techStack: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    client: "Samriddhi Agritech",
+    year: "2024"
+  },
+  {
+    id: "kohlico",
+    name: "Kohlico",
+    category: "E-commerce",
+    desc: "Digital sales and online business management.",
+    type: "E-commerce",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
+    link: "#",
+    caseStudyText: "Built a fully scalable e-commerce infrastructure supporting high-volume digital sales. Integrated secure payment gateways and an intuitive admin panel for business management.",
+    techStack: ["Next.js", "Express", "PostgreSQL", "Stripe"],
+    client: "Kohlico Enterprises",
+    year: "2023"
+  },
+  {
+    id: "orbosis-global",
+    name: "Orbosis Global",
+    category: "IT Services",
+    desc: "Comprehensive IT service delivery and scalable infrastructure.",
+    type: "Service Portal",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
+    link: "#",
+    caseStudyText: "Designed and deployed a service portal for IT infrastructure management. The system allows seamless service delivery tracking and resource allocation for global clients.",
+    techStack: ["Vue.js", "Python Fast API", "AWS"],
+    client: "Orbosis Global",
+    year: "2024"
+  },
+  {
+    id: "paper-bill",
+    name: "Paper Bill",
+    category: "Accounting CRM",
+    desc: "Itemized billing and powerful cost calculation engine.",
+    type: "Web App",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
+    link: "#",
+    caseStudyText: "Developed a robust CRM tailored for accounting firms. It features an advanced cost calculation engine and automated itemized billing generation.",
+    techStack: ["React", "Django", "MySQL"],
+    client: "Paper Bill Inc.",
+    year: "2023"
+  },
+  {
+    id: "velocity",
+    name: "Velocity",
+    category: "EdTech Platform",
+    desc: "Complete corporate training center website with Student Portal & Admin Dashboard.",
+    type: "LMS & CRM",
+    image: "/images/velocity-preview.png",
+    link: "#",
+    caseStudyText: "A comprehensive EdTech platform built for a corporate training center. Features include a fully functional student portal for accessing courses, and a powerful admin dashboard for managing students, courses, and trainers.",
+    techStack: ["React", "Node.js", "MongoDB", "Framer Motion"],
+    client: "Velocity Corporate Training Center",
+    year: "2025"
+  },
+  {
+    id: "scalyx",
+    name: "Scalyx",
+    category: "Finance Dashboard",
+    desc: "Financial cost analysis and modeling application.",
+    type: "Web App",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    link: "#",
+    caseStudyText: "Created a centralized financial dashboard for cost modeling and analysis. Provides real-time interactive charts and predictive financial data modeling.",
+    techStack: ["React", "D3.js", "Firebase"],
+    client: "Scalyx Finance",
+    year: "2024"
+  }
+];

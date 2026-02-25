@@ -4,62 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { scrambleText } from '../utils/textEffects';
 import './PortfolioGrid.css';
 
-const projects = [
-  {
-    name: "Samriddhi",
-    category: "Agro Tech",
-    desc: "Agricultural product registration and online inventory management.",
-    type: "Dashboard",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=800&auto=format&fit=crop", // Swapped to a working agriculture tech image
-    link: "#",
-    caseStudy: "/portfolio/samriddhi"
-  },
-  {
-    name: "Kohlico",
-    category: "E-commerce",
-    desc: "Digital sales and online business management.",
-    type: "E-commerce",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-    caseStudy: "/portfolio/kohlico"
-  },
-  {
-    name: "Orbosis Global",
-    category: "IT Services",
-    desc: "Comprehensive IT service delivery and scalable infrastructure.",
-    type: "Service Portal",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-    caseStudy: "/portfolio/orbosis-global"
-  },
-  {
-    name: "Paper Bill",
-    category: "Accounting CRM",
-    desc: "Itemized billing and powerful cost calculation engine.",
-    type: "Web App",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-    caseStudy: "/portfolio/paper-bill"
-  },
-  {
-    name: "Velocity Corp",
-    category: "EdTech Platform",
-    desc: "Complete corporate training center website with Student Portal & Admin Dashboard.",
-    type: "LMS & CRM",
-    image: "/images/velocity-preview.png", // USER_ACTION: Save your screenshot as velocity-preview.png in public/images/ folder
-    link: "#",
-    caseStudy: "/portfolio/velocity"
-  },
-  {
-    name: "Scalyx",
-    category: "Finance Dashboard",
-    desc: "Financial cost analysis and modeling application.",
-    type: "Web App",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-    caseStudy: "/portfolio/scalyx"
-  }
-];
+import { projectsData } from '../data/projects';
 
 const TiltCard = ({ project, index }) => {
   const ref = useRef(null);
@@ -159,10 +104,7 @@ const TiltCard = ({ project, index }) => {
 
         <div className="card-bottom" style={{ transform: "translateZ(40px)" }}>
           <div className="tech-tags mono" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-main)', textDecoration: 'none' }} className="hover:text-accent transition-colors">
-              <ExternalLink size={14} /> Visit Site
-            </a>
-            <a href={project.caseStudy} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none' }} className="hover:text-white transition-colors">
+            <a href={`/portfolio/${project.id}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none' }} className="hover:text-white transition-colors">
               Case Study
             </a>
           </div>
@@ -191,8 +133,8 @@ const PortfolioGrid = () => {
       </div>
 
       <div className="portfolio-bento">
-        {projects.map((project, index) => (
-          <TiltCard key={index} project={project} index={index} />
+        {projectsData.map((project, index) => (
+          <TiltCard key={project.id} project={project} index={index} />
         ))}
       </div>
 

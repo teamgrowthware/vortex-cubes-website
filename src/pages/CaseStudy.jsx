@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, MonitorSmartphone, Server, ExternalLink } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
+import { projectsData } from '../data/projects';
 
 const CaseStudy = () => {
   const { id } = useParams();
@@ -11,18 +12,30 @@ const CaseStudy = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Simple placeholder data format matching the slug
-  const projectTitle = id.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  // Find the specific project data based on URL parameter
+  const project = projectsData.find(p => p.id === id);
+
+  if (!project) {
+    return (
+      <PageTransition>
+        <main className="section container" style={{ paddingTop: '8rem', minHeight: '100vh', textAlign: 'center' }}>
+          <h1 className="hero-title text-accent">404 // DATA_NOT_FOUND</h1>
+          <p className="text-muted" style={{ marginTop: '2rem' }}>The requested project record does not exist in the mainframe.</p>
+          <Link to="/#portfolio" className="btn btn-primary" style={{ marginTop: '3rem', display: 'inline-block' }}>RETURN_TO_PORTFOLIO</Link>
+        </main>
+      </PageTransition>
+    );
+  }
 
   return (
     <PageTransition>
       <main className="section container" style={{ paddingTop: '8rem', minHeight: '100vh' }}>
         <div className="section-header" style={{ marginBottom: '2rem' }}>
-          <Link to="/" className="btn btn-secondary mono" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
+          <Link to="/#portfolio" className="btn btn-secondary mono" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
             <ArrowLeft size={16} /> RETURN_TO_SYSTEM
           </Link>
           <h1 className="hero-title" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
-            <span className="text-accent">PROJECT //</span> {projectTitle}
+            <span className="text-accent">PROJECT //</span> {project.name}
           </h1>
           <div className="header-line"></div>
         </div>
@@ -30,20 +43,21 @@ const CaseStudy = () => {
         <div className="glass-panel" style={{ padding: '3rem', borderRadius: '12px', border: '1px solid var(--bg-border)' }}>
           <div className="mono text-muted" style={{ marginBottom: '2rem', display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
             <div>
-              <span className="text-accent">CLIENT:</span> {projectTitle}
+              <span className="text-accent">CLIENT:</span> {project.client}
             </div>
             <div>
               <span className="text-accent">STATUS:</span> DEPLOYED
             </div>
             <div>
-              <span className="text-accent">YEAR:</span> 2025
+              <span className="text-accent">YEAR:</span> {project.year}
+            </div>
+            <div>
+              <span className="text-accent">TYPE:</span> {project.type}
             </div>
           </div>
 
           <p className="text-muted" style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '3rem' }}>
-            This is a placeholder case study page for {projectTitle}. The comprehensive data file detailing the specific
-            challenges, solutions, architectures, and development timelines has not yet been loaded into the system core.
-            Future updates will parse the detailed markdown case studies into this view.
+            {project.caseStudyText}
           </p>
 
           <h3 className="mono" style={{ marginBottom: '1.5rem', color: 'var(--text-main)' }}>SYSTEM_ARCHITECTURE</h3>
@@ -53,9 +67,9 @@ const CaseStudy = () => {
               <MonitorSmartphone className="text-accent" style={{ marginBottom: '1rem' }} />
               <h4 className="mono" style={{ marginBottom: '0.5rem' }}>FRONTEND_LAYER</h4>
               <ul className="text-muted text-sm space-y-2">
-                <li>{'>'} React Framework</li>
+                <li>{'>'} {project.techStack[0] || 'Modern UI Framework'}</li>
                 <li>{'>'} State Management</li>
-                <li>{'>'} WebGL Graphics</li>
+                <li>{'>'} Responsive Design</li>
               </ul>
             </div>
 
@@ -63,16 +77,18 @@ const CaseStudy = () => {
               <Server className="text-accent" style={{ marginBottom: '1rem' }} />
               <h4 className="mono" style={{ marginBottom: '0.5rem' }}>BACKEND_NODE</h4>
               <ul className="text-muted text-sm space-y-2">
-                <li>{'>'} REST API</li>
+                <li>{'>'} {project.techStack[1] || 'REST API'}</li>
+                <li>{'>'} {project.techStack[2] || 'Database Engine'}</li>
                 <li>{'>'} Authentication</li>
-                <li>{'>'} Database Engine</li>
               </ul>
             </div>
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
+            {/* The Visit_Live_Deployment button is conditionally rendered here if link isn't "#", though currently all are "#".
+               Just leaving it as a mockup standard. */}
             <button className="btn btn-primary mono" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              VIEW_LIVE_DEPLOYMENT <ExternalLink size={16} />
+              ACCESS_SECURE_PORTAL <ExternalLink size={16} />
             </button>
           </div>
         </div>
