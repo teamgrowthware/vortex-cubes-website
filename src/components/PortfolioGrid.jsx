@@ -65,13 +65,14 @@ const TiltCard = ({ project, index }) => {
       className={`bento-card glass-panel group relative ${index === 0 || index === 3 ? 'featured-card' : ''}`}
     >
       {/* 3D Container specific padding to keep content separate from the outer frame */}
-      <div style={{ padding: '1.5rem', transform: "translateZ(30px)", transformStyle: "preserve-3d" }}>
+      <div style={{ padding: '1.5rem', transform: "translateZ(30px)", transformStyle: "preserve-3d", pointerEvents: "none" }}>
         {/* Dynamic Glare Overlay */}
         <motion.div
-          className="pointer-events-none absolute inset-0 z-50 rounded-xl"
+          className="absolute inset-0 z-50 rounded-xl"
           style={{
             background: `radial-gradient(circle at ${glareX.get()} ${glareY.get()}, rgba(255,255,255,0.08) 0%, transparent 60%)`,
             opacity: useTransform(x, [-0.5, 0, 0.5], [0.8, 0, 0.8]), // Only show glare near edges
+            pointerEvents: "none"
           }}
         />
 
@@ -86,7 +87,7 @@ const TiltCard = ({ project, index }) => {
             style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.7s ease' }}
             className="group-hover:scale-105"
           />
-          <div style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 2, transform: "translateZ(20px)" }}>
+          <div style={{ position: 'absolute', top: '1rem', left: '1rem', zIndex: 2, transform: "translateZ(20px)", pointerEvents: "auto" }}>
             <span className="badge" style={{ color: 'var(--text-main)', border: '1px solid var(--accent-blue)', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
               {project.type}
             </span>
@@ -102,15 +103,12 @@ const TiltCard = ({ project, index }) => {
           <p className="text-muted">{project.desc}</p>
         </div>
 
-        <div className="card-bottom" style={{ transform: "translateZ(40px)" }}>
+        <div className="card-bottom" style={{ transform: "translateZ(40px)", position: "relative", zIndex: 100 }}>
           <div className="tech-tags mono" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`/portfolio/${project.id}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none' }} className="hover:text-white transition-colors">
+            <a href={`/portfolio/${project.id}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none', pointerEvents: 'auto', position: 'relative', zIndex: 200 }} className="hover:text-white transition-colors">
               Case Study
             </a>
           </div>
-          <button className="icon-btn text-accent" onClick={() => alert(`SYSTEM_MSG: Accessing secure project files for ${project.name}...`)}>
-            <ArrowUpRight size={20} />
-          </button>
         </div>
       </div>
     </motion.div>
