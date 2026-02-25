@@ -165,7 +165,7 @@ const Hero = () => {
             </button>
             <button
               className="btn btn-secondary"
-              onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               data-code-tooltip="const session = await createSession({&#10;  mode: 'demo',&#10;  secure: true&#10;});"
             >
               REQUEST DEMO
