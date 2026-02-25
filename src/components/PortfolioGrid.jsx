@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { scrambleText } from '../utils/textEffects';
 import './PortfolioGrid.css';
 
+import { Link } from 'react-router-dom';
 import { projectsData } from '../data/projects';
 
 const TiltCard = ({ project, index }) => {
@@ -65,7 +66,7 @@ const TiltCard = ({ project, index }) => {
       className={`bento-card glass-panel group relative ${index === 0 || index === 3 ? 'featured-card' : ''}`}
     >
       {/* 3D Container specific padding to keep content separate from the outer frame */}
-      <div style={{ padding: '1.5rem', transform: "translateZ(30px)", transformStyle: "preserve-3d", pointerEvents: "none" }}>
+      <div style={{ padding: '1.5rem', transform: "translateZ(30px)", transformStyle: "preserve-3d" }}>
         {/* Dynamic Glare Overlay */}
         <motion.div
           className="absolute inset-0 z-50 rounded-xl"
@@ -103,11 +104,11 @@ const TiltCard = ({ project, index }) => {
           <p className="text-muted">{project.desc}</p>
         </div>
 
-        <div className="card-bottom" style={{ transform: "translateZ(40px)", position: "relative", zIndex: 100 }}>
+        <div className="card-bottom" style={{ transform: "translateZ(40px)", position: "relative", zIndex: 10 }}>
           <div className="tech-tags mono" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`/portfolio/${project.id}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none', pointerEvents: 'auto', position: 'relative', zIndex: 200 }} className="hover:text-white transition-colors">
+            <Link to={`/portfolio/${project.id}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none' }} className="hover:text-white transition-colors relative z-20">
               Case Study
-            </a>
+            </Link>
           </div>
         </div>
       </div>
