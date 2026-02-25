@@ -18,6 +18,38 @@
   background: linear-gradient(90deg, var(--bg-border), transparent);
 }
 
+/* Stats Section Styles */
+.journey-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.timeline-node {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.timeline-node .node-icon {
+  margin-bottom: 0.5rem;
+}
+
+.timeline-node .node-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.timeline-node .node-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
 .journey-timeline {
   position: relative;
   max-width: 100%;
@@ -151,5 +183,35 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-bottom: 2rem;
+  }
+
+  /* 2x2 Grid for Mobile Stats */
+  .journey-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .timeline-node {
+    padding: 1.5rem 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline-node .node-icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  .timeline-node .node-value {
+    font-size: 1.8rem;
+  }
+
+  .timeline-node .node-title {
+    font-size: 0.95rem;
+  }
+
+  .timeline-node .node-desc {
+    font-size: 0.8rem;
   }
 }

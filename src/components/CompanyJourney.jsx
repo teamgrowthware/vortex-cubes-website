@@ -81,7 +81,7 @@ const CompanyJourney = () => {
         <div className="header-line"></div>
       </div>
 
-      <div className="journey-stats grid grid-cols-4" style={{ display: 'grid', gap: '2rem', marginBottom: '4rem', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' }}>
+      <div className="journey-stats">
         {stats.map((item, index) => (
           <motion.div
             key={item.id}
@@ -90,12 +90,11 @@ const CompanyJourney = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
-            style={{ padding: '2rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center' }}
           >
-            <div className="node-icon" style={{ marginBottom: '0.5rem' }}>{item.icon}</div>
+            <div className="node-icon">{item.icon}</div>
             <div className="node-content">
-              <h3 className="node-value text-accent" style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '0.5rem', lineHeight: '1' }}>{item.value}</h3>
-              <h4 className="node-title mono" style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>{item.title}</h4>
+              <h3 className="node-value text-accent">{item.value}</h3>
+              <h4 className="node-title mono">{item.title}</h4>
               <p className="node-desc text-muted">{item.desc}</p>
             </div>
           </motion.div>
