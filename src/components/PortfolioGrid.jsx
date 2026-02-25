@@ -4,11 +4,12 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { scrambleText } from '../utils/textEffects';
 import './PortfolioGrid.css';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { projectsData } from '../data/projects';
 
 const TiltCard = ({ project, index }) => {
   const ref = useRef(null);
+  const navigate = useNavigate();
 
   // Motion values for tracking mouse position
   const x = useMotionValue(0);
@@ -104,11 +105,17 @@ const TiltCard = ({ project, index }) => {
           <p className="text-muted">{project.desc}</p>
         </div>
 
-        <div className="card-bottom" style={{ transform: "translateZ(40px)", position: "relative", zIndex: 10 }}>
+        <div className="card-bottom" style={{ transform: "translateZ(40px)", position: "relative", zIndex: 50 }}>
           <div className="tech-tags mono" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link to={`/portfolio/${project.id}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none' }} className="hover:text-white transition-colors relative z-20">
+            <div
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navigate(`/portfolio/${project.id}`);
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--accent-blue)', textDecoration: 'none', cursor: 'pointer', pointerEvents: 'auto', padding: '0.5rem 0' }} className="hover:text-white transition-colors relative z-50">
               Case Study
-            </Link>
+            </div>
           </div>
         </div>
       </div>
