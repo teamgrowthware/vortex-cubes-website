@@ -26,16 +26,16 @@ export const projectsData = [
     year: "2025"
   },
   {
-    id: "orbosis-global",
-    name: "Orbosis Global",
-    category: "IT Services",
-    desc: "Comprehensive IT service delivery and scalable infrastructure.",
-    type: "Service Portal",
-    image: "/images/orbosis-preview.png",
+    id: "consult-admin",
+    name: "ConsultAdmin",
+    category: "Admin Dashboard",
+    desc: "Comprehensive administrative platform for business management.",
+    type: "Dashboard",
+    image: "/images/consultAdmin-preview.png",
     link: "#",
-    caseStudyText: "Designed and deployed a service portal for IT infrastructure management. The system allows seamless service delivery tracking and resource allocation for global clients.",
-    techStack: ["Vue.js", "Python Fast API", "AWS"],
-    client: "Orbosis Global",
+    caseStudyText: "Designed and developed a scalable administrative dashboard for dynamic business operations. The platform enables streamlined data management and real-time operational analytics.",
+    techStack: ["React", "Express", "PostgreSQL", "Tailwind CSS"],
+    client: "ConsultAdmin",
     year: "2024"
   },
   {
