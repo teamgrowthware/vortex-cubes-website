@@ -26,7 +26,7 @@ const Navigation = () => {
         <a href="#industries" onClick={(e) => handleScroll(e, 'industries')}>SECTORS</a>
         <a href="#globe" onClick={(e) => handleScroll(e, 'globe')}>GLOBAL</a>
         <a href="#portfolio" onClick={(e) => handleScroll(e, 'portfolio')}>PORTFOLIO</a>
-        <a href="#journey" onClick={(e) => handleScroll(e, 'journey')}>ABOUT US</a>
+        <a href="/about">ABOUT US</a>
       </div>
 
       <div className="nav-actions">
@@ -62,7 +62,7 @@ const Navigation = () => {
             <a href="#industries" onClick={(e) => handleScroll(e, 'industries')}>SECTORS</a>
             <a href="#globe" onClick={(e) => handleScroll(e, 'globe')}>GLOBAL</a>
             <a href="#portfolio" onClick={(e) => handleScroll(e, 'portfolio')}>PORTFOLIO</a>
-            <a href="#journey" onClick={(e) => handleScroll(e, 'journey')}>ABOUT US</a>
+            <a href="/about">ABOUT US</a>
           </div>
           <div className="mobile-nav-actions">
             <button

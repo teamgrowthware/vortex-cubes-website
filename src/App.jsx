@@ -8,6 +8,7 @@ import ScrollHexTracker from './components/ScrollHexTracker';
 import CustomCursor from './components/CustomCursor';
 import CodeTooltip from './components/CodeTooltip';
 import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
 import CaseStudy from './pages/CaseStudy';
 import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
@@ -61,6 +62,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/portfolio/:id" element={<CaseStudy />} />
       </Routes>
     </AnimatePresence>

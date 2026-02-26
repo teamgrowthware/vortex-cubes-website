@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="footer-col">
           <h4 className="footer-heading">Company</h4>
           <ul className="footer-links">
-            <li><a href="/#about">About Us</a></li>
+            <li><a href="/about">About Us</a></li>
             <li><a href="/#portfolio">Portfolio</a></li>
             <li><a href="/#contact">Contact</a></li>
             <li><a href="/#services">Services</a></li>
