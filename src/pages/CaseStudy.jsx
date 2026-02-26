@@ -62,7 +62,7 @@ const CaseStudy = () => {
 
           <h3 className="mono" style={{ marginBottom: '1.5rem', color: 'var(--text-main)' }}>SYSTEM_ARCHITECTURE</h3>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '0' }}>
             <div className="glass-panel" style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)' }}>
               <MonitorSmartphone className="text-accent" style={{ marginBottom: '1rem' }} />
               <h4 className="mono" style={{ marginBottom: '0.5rem' }}>FRONTEND_LAYER</h4>
