@@ -108,9 +108,10 @@
   line-height: 2;
 }
 
-.globe-container {
-  flex-direction: column;
-}
+@media (max-width: 900px) {
+  .globe-container {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
