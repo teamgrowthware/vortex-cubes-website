@@ -65,16 +65,16 @@ export const projectsData = [
     year: "2025"
   },
   {
-    id: "scalyx",
-    name: "Scalyx",
-    category: "Finance Dashboard",
-    desc: "Financial cost analysis and modeling application.",
-    type: "Web App",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    id: "hotel-booking",
+    name: "Hotel Booking",
+    category: "Hospitality",
+    desc: "Comprehensive hotel reservation and management platform.",
+    type: "Booking System",
+    image: "/images/hotelbooking-preview.png",
     link: "#",
-    caseStudyText: "Created a centralized financial dashboard for cost modeling and analysis. Provides real-time interactive charts and predictive financial data modeling.",
-    techStack: ["React", "D3.js", "Firebase"],
-    client: "Scalyx Finance",
-    year: "2024"
+    caseStudyText: "Developed a modern hotel booking platform with real-time room availability, seamless payment integration, and a comprehensive management dashboard for hotel administrators.",
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    client: "Grand Horizon Hotels",
+    year: "2025"
   }
 ];
