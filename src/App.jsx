@@ -42,8 +42,10 @@ const ScrollToTopAndLenis = () => {
     });
     gsap.ticker.lagSmoothing(0);
 
-    // Also forcefully reset scroll on route change just to be safe
-    window.scrollTo(0, 0);
+    const { hash } = window.location;
+    if (!hash) {
+      window.scrollTo(0, 0);
+    }
 
     return () => {
       gsap.ticker.remove(lenis.raf);

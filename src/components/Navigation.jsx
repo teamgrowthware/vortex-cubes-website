@@ -1,16 +1,25 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { BookOpen, PhoneCall, Box, Menu, X } from 'lucide-react';
 import './Navigation.css';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleScroll = (e, id) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false); // Close menu on click
+
+    if (location.pathname !== '/') {
+      navigate('/#' + id);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false); // Close menu on click
     }
   };
 
